@@ -6,17 +6,16 @@
 //
 
 #import "ViewController.h"
-
+#import "Cell.h"
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSArray<NSString *> * urlStrings = @[
+    urlStrings = @[
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2016/09/m-2-a-500-e1532431532729.png",
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2016/09/m-1-a-1-e1532431581761.png",
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2018/04/lenguajes-e1532431629277.png",
@@ -33,24 +32,52 @@
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2018/04/desarrollo-apps-e1532432420390.png",
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2018/04/centros-e1532432457861.png"
     ];
-    NSArray<NSString *> * titleText = @[
-        @"Módulo 1: entornos de desarrollo para videojuegos multiplataforma: Unity",
-        @"Módulo 2: programación en Java para Android",
-        @"Módulo 3: lenguajes de marcas y sistemas de información",
-        @"Módulo 4: sistemas interactivos y hardware abierto de última generación",
-        @"Módulo 5: gestión de bases de datos",
-        @"Módulo 6: formación y orientación laboral app",
-        @"Módulo 7: empresa e iniciativa emprendedora",
-        @"Módulo 8: programación multimedia para terminales iOs",
-        @"Módulo 9: desarrollo de interfaces",
-        @"Módulo 10: programación de servicios y procesos",
-        @"Módulo 11: sistemas de gestión empresarial",
-        @"Módulo 12: acceso a datos y cloud",
-        @"Módulo 13: inglés técnico",
-        @"Módulo 14: proyecto de desarrollo de aplicaciones",
-        @"Módulo 15: formación en centros de trabajo",
+    titleText = @[
+        @"Entornos de desarrollo para videojuegos multiplataforma: Unity",
+        @"Programación en Java para Android",
+        @"Lenguajes de marcas y sistemas de información",
+        @"Sistemas interactivos y hardware abierto de última generación",
+        @"Gestión de bases de datos",
+        @"Formación y orientación laboral app",
+        @"Empresa e iniciativa emprendedora",
+        @"Programación multimedia para terminales iOs",
+        @"Desarrollo de interfaces",
+        @"Programación de servicios y procesos",
+        @"Sistemas de gestión empresarial",
+        @"Acceso a datos y cloud",
+        @"Inglés técnico",
+        @"Proyecto de desarrollo de aplicaciones",
+        @"Formación en centros de trabajo",
     ];
+    
+    //NSData * imageData =[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStrings[0]]];
 }
-
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [titleText count];
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    Cell * cell = [tableView dequeueReusableCellWithIdentifier:@"ReusableCell"];
+    
+    [cell.name setText:[titleText objectAtIndex:indexPath.row]];
+    //Set Number
+    [cell.number setText:[[NSString alloc]initWithFormat:@"Modulo %li",(long)indexPath.row]];
+    NSData * imageData =[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStrings[indexPath.row]]];
+    [cell.image setImage:[UIImage imageWithData:imageData]];
+    return cell;
+}
+    //Height
+    - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+        return 200;
+    }
+    /*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[marcas objectAtIndex:indexPath.row] message:[modelos objectAtIndex:indexPath.row] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+    
+    }
+*/
 @end
