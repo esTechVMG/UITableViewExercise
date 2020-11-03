@@ -32,7 +32,23 @@
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2018/04/fundamentos-e1532432389632.png",
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2018/04/desarrollo-apps-e1532432420390.png",
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2018/04/centros-e1532432457861.png"
-        
+    ];
+    NSArray<NSString *> * titleText = @[
+        @"Módulo 1: entornos de desarrollo para videojuegos multiplataforma: Unity",
+        @"Módulo 2: programación en Java para Android",
+        @"Módulo 3: lenguajes de marcas y sistemas de información",
+        @"Módulo 4: sistemas interactivos y hardware abierto de última generación",
+        @"Módulo 5: gestión de bases de datos",
+        @"Módulo 6: formación y orientación laboral app",
+        @"Módulo 7: empresa e iniciativa emprendedora",
+        @"Módulo 8: programación multimedia para terminales iOs",
+        @"Módulo 9: desarrollo de interfaces",
+        @"Módulo 10: programación de servicios y procesos",
+        @"Módulo 11: sistemas de gestión empresarial",
+        @"Módulo 12: acceso a datos y cloud",
+        @"Módulo 13: inglés técnico",
+        @"Módulo 14: proyecto de desarrollo de aplicaciones",
+        @"Módulo 15: formación en centros de trabajo",
     ];
 }
 
