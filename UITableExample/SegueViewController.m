@@ -15,6 +15,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _nameLabel.text=_name;
+    _numberLabel.text=_number;
     // Do any additional setup after loading the view.
 }
 

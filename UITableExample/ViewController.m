@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "Cell.h"
+#import "SegueViewController.h"
 @interface ViewController ()
 
 @end
@@ -62,22 +63,22 @@
     Cell * cell = [tableView dequeueReusableCellWithIdentifier:@"ReusableCell"];
     
     [cell.name setText:[titleText objectAtIndex:indexPath.row]];
-    //Set Number
-    [cell.number setText:[[NSString alloc]initWithFormat:@"Modulo %li",(long)indexPath.row]];
+    [cell.number setText:[[NSString alloc]initWithFormat:@"Modulo %li",(long)indexPath.row+1]];
     NSData * imageData =[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStrings[indexPath.row]]];
     [cell.image setImage:[UIImage imageWithData:imageData]];
     return cell;
 }
     //Height
     - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-        return 200;
+        return 100;
     }
-    /*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[marcas objectAtIndex:indexPath.row] message:[modelos objectAtIndex:indexPath.row] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:ok];
-        [self presentViewController:alertController animated:YES completion:nil];
-    
-    }
-*/
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIStoryboard * mainStoryboard =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+     SegueViewController * viewController= [mainStoryboard instantiateViewControllerWithIdentifier:@"InfoSegue"];
+    viewController.number=[NSString stringWithFormat:@"Modulo: %li",indexPath.row+1];
+    viewController.name=[titleText objectAtIndex:indexPath.row];
+        [self presentViewController:viewController animated:YES completion:nil];
+}
 @end
