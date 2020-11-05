@@ -17,6 +17,7 @@
     [super viewDidLoad];
     _nameLabel.text=_name;
     _numberLabel.text=_number;
+    [_imageView setImage:[UIImage imageWithData:_dataForImage]];
     // Do any additional setup after loading the view.
 }
 

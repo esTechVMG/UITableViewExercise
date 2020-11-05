@@ -8,7 +8,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
-    NSArray<NSString *> * urlStrings,* titleText;
+    NSArray<NSString *> *urlStrings,*titleText;
+    NSMutableArray<NSData *> *imageDataArray;
 }
 @end
 

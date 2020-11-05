@@ -15,6 +15,7 @@
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    imageDataArray=[[NSMutableArray alloc]initWithArray:@[]];
     // Do any additional setup after loading the view.
     urlStrings = @[
         @"https://escuelaestech-107bd.kxcdn.com/wp-content/uploads/2016/09/m-2-a-500-e1532431532729.png",
@@ -65,6 +66,7 @@
     [cell.name setText:[titleText objectAtIndex:indexPath.row]];
     [cell.number setText:[[NSString alloc]initWithFormat:@"Modulo %li",(long)indexPath.row+1]];
     NSData * imageData =[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStrings[indexPath.row]]];
+    [imageDataArray addObject:imageData];
     [cell.image setImage:[UIImage imageWithData:imageData]];
     return cell;
 }
@@ -79,6 +81,7 @@
      SegueViewController * viewController= [mainStoryboard instantiateViewControllerWithIdentifier:@"InfoSegue"];
     viewController.number=[NSString stringWithFormat:@"Modulo: %li",indexPath.row+1];
     viewController.name=[titleText objectAtIndex:indexPath.row];
+    viewController.dataForImage=[imageDataArray objectAtIndex:indexPath.row];
         [self presentViewController:viewController animated:YES completion:nil];
 }
 @end

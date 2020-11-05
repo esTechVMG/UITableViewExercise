@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (nonatomic,assign)NSString* name, *number,*url;
+@property (nonatomic,assign)NSString* name, *number;
+@property (nonatomic,assign)NSData *dataForImage;
 @end
 
 NS_ASSUME_NONNULL_END
